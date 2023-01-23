@@ -26,7 +26,7 @@ class DHT extends EventEmitter {
   constructor (opts = {}) {
     super()
 
-    this.bootstrapNodes = opts.bootstrap === false ? [] : (opts.bootstrap || []).map(parseNode)
+    this.bootstrapNodes = (opts.bootstrap || []).map(parseNode)
     this.table = new Table(opts.id || randomBytes(32))
     this.nodes = new TOS()
     this.udx = opts.udx || new UDX()
